@@ -41,8 +41,8 @@
 #
 # TODO: make a version of this that projects into a different gridparent
 
-
-DATAROOT=/deathstar/data
+# DATAROOT is global variable set before running scripts
+#DATAROOT=/deathstar/data
 
 #ROOT=/deathstar/data/vRF_tcs
 EXPTDIR=$1

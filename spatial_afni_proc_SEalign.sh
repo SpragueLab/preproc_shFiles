@@ -31,8 +31,8 @@ ENDRUN=$6
 
 BLURAMT=$7
 
-
-DATAROOT=/deathstar/data
+# DATAROOT is global variable now
+#DATAROOT=/deathstar/data
 
 cd $DATAROOT/$EXPTDIR/$SUBJ/$SESS/
 

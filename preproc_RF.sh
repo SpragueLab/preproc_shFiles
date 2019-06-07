@@ -38,9 +38,10 @@
 # 4) generate vista directory with mean timeseries volumes for bias-corrected volume (bc),
 #    surface-projected (surf) and surface-smoothed (ss5) data, in RAI orientation
 # 5) ensure necessary placeholder images (surfanat_brainmask, etc) are intact
+#
+# DATAROOT is 'global' variable set before running preproc scripts
 
-
-DATAROOT=/deathstar/data
+#DATAROOT=/deathstar/data
 
 BLURAMT=5   # make this dynamic?  maybe better to keep it static here...
 
@@ -48,7 +49,7 @@ EXPTDIR=$1
 SUBJ=$2
 SESS=$3
 
-
+# ASSUMPTION: freesurfer subjects live in a 'project' directory (or are linked to from that directory...)
 ln -s ../../fs_subjects/${SUBJ}anat $DATAROOT/$EXPTDIR/$SUBJ/${SUBJ}anat
 
 
@@ -68,7 +69,7 @@ export OMP_NUM_THREADS=8
 cat $DATAROOT/$EXPTDIR/$SUBJ/$SESS/${SUBJ}_${SESS}_SEtargets.txt | parallel -P $CORES -C ',' \
   $PREPROC/spatial_afni_proc_SEalign.sh $EXPTDIR $SUBJ $SESS {1} {2} {3} $BLURAMT
 
-# reset to default value
+# reset to default value (TODO: another global var?)
 export OMP_NUM_THREADS=24
 
 
