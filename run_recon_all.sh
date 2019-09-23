@@ -32,17 +32,17 @@ fi
 #     -parallel -openmp 16 -hires
 
 
-# recon-all -autorecon1 -autorecon2 -autorecon3 -sd $SUBJ_DIR -subjid ${SUBJ}anat \
-#     -i  $SUBJ_DIR/${SUBJ}src/T1_1.nii* \
-#     -i  $SUBJ_DIR/${SUBJ}src/T1_2.nii* \
-#     -i  $SUBJ_DIR/${SUBJ}src/T1_3.nii* \
-#     -T2 $SUBJ_DIR/${SUBJ}src/T2_1.nii* \
-#     -expert $PREPROC/hires_expert \
-#     -T2pial -parallel -openmp $OPENMP_CORES -hires
-
-
 recon-all -autorecon1 -autorecon2 -autorecon3 -sd $SUBJ_DIR -subjid ${SUBJ}anat \
-    -i  $SUBJ_DIR/${SUBJ}src/T1_1.nii* \
-    -T2 $SUBJ_DIR/${SUBJ}src/T2_1.nii* \
-    -expert $PREPROC/hires_expert \
-    -T2pial -parallel -openmp $OPENMP_CORES -hires
+     -i  $SUBJ_DIR/${SUBJ}src/T1_1.nii* \
+     -i  $SUBJ_DIR/${SUBJ}src/T1_2.nii* \
+     -i  $SUBJ_DIR/${SUBJ}src/T1_3.nii* \
+     -T2 $SUBJ_DIR/${SUBJ}src/T2_1.nii* \
+     -expert $PREPROC/hires_expert \
+     -T2pial -parallel -openmp $OPENMP_CORES -hires
+
+
+#recon-all -autorecon1 -autorecon2 -autorecon3 -sd $SUBJ_DIR -subjid ${SUBJ}anat \
+#    -i  $SUBJ_DIR/${SUBJ}src/T1_1.nii* \
+#    -T2 $SUBJ_DIR/${SUBJ}src/T2_1.nii* \
+#    -expert $PREPROC/hires_expert \
+#    -T2pial -parallel -openmp $OPENMP_CORES -hires
