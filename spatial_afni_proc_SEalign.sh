@@ -31,8 +31,8 @@ ENDRUN=$6
 
 BLURAMT=$7
 
-
-DATAROOT=/deathstar/data
+# DATAROOT is global variable now
+#DATAROOT=/deathstar/data
 
 cd $DATAROOT/$EXPTDIR/$SUBJ/$SESS/
 
@@ -81,7 +81,7 @@ then
 
 # no blurring
 afni_proc.py -subj_id $RESULTSDIR \
-             -dsets $(printf "/deathstar/data/$EXPTDIR/$SUBJ/$SESS/run%02.f_bc.nii.gz " `seq -s " " $STARTRUN $ENDRUN`) \
+             -dsets $(printf "$DATAROOT/$EXPTDIR/$SUBJ/$SESS/run%02.f_bc.nii.gz " `seq -s " " $STARTRUN $ENDRUN`) \
              -copy_anat $DATAROOT/$EXPTDIR/$SUBJ/${SUBJ}anat/SUMA/brainmask.nii \
              -blocks align volreg surf \
              -volreg_align_e2a \
@@ -106,7 +106,7 @@ afni_proc.py -subj_id $RESULTSDIR \
 else
 
   afni_proc.py -subj_id $RESULTSDIR \
-               -dsets $(printf "/deathstar/data/$EXPTDIR/$SUBJ/$SESS/run%02.f_bc.nii.gz " `seq -s " " $STARTRUN $ENDRUN`) \
+               -dsets $(printf "$DATAROOT/$EXPTDIR/$SUBJ/$SESS/run%02.f_bc.nii.gz " `seq -s " " $STARTRUN $ENDRUN`) \
                -copy_anat $DATAROOT/$EXPTDIR/$SUBJ/${SUBJ}anat/SUMA/brainmask.nii \
                -blocks align volreg surf blur \
                -volreg_align_e2a \

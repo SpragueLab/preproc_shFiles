@@ -1,7 +1,8 @@
 #!/bin/bash
 # bias_correct.sh
 
-DATAROOT=/deathstar/data
+# DATAROOT is global variable now
+#DATAROOT=/deathstar/data
 EXPTDIR=$1
 SUBJ=$2
 SESS=$3
