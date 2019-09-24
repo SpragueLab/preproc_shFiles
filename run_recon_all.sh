@@ -1,4 +1,23 @@
 #!/bin/bash
+#
+# run_recon_all.sh
+#
+# Executes recon-all using all T1 and T2 scans available for a given subject within a given freesurfer subjects directory
+#
+# Data is assumed to be in <SUBJ>anat within a freesurfer directory. If you have a global $SUBJECTS_DIR set, to run for sub000 run like:
+# run_recon_all.sh sub000
+#
+# If the data for sub000 lives in a directory other than freesurfer-defined $SUBJECTS_DIR, you'll need to specify that directory as the second arg:
+# run_recon_all.sh sub000 /dir/where/data/lives
+#
+# To specify the number of cores, use the 3rd argument (remmeber, this is for each hemi, so use at most total # cores/2)
+# run_recon_all.sh sub000 /dir/where/data/lives 18
+# (note: for above, if using Freesurfer-set $SUBJECTS_DIR, use that as 2nd arg:
+# run_recon_all.sh sub000 $SUBJECTS_DIR 18
+#
+# NOTES:
+# - this doesn't work very well yet! does not dynamicallly scale to number of T1 images (TODO)
+# - if specifying 3rd arg, must also specify subject directory (see above)
 
 
 SUBJ=$1
