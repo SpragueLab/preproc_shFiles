@@ -9,7 +9,7 @@
 
 
 
-DATAROOT=/deathstar/data
+#DATAROOT=/deathstar/data
 
 EXPTDIR=$1
 

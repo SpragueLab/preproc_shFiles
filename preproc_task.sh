@@ -39,7 +39,7 @@
 #    [mostly, turn to percent signal change]
 
 
-DATAROOT=/deathstar/data
+#DATAROOT=/deathstar/data
 
 BLURAMT=0   # make this dynamic?  maybe better to keep it static here...
 

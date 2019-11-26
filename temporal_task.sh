@@ -15,7 +15,7 @@
 # can process either "func" or "surf" files (4th arg), which have already been pre-processed
 
 
-DATAROOT="/deathstar/data"
+#DATAROOT="/deathstar/data"
 
 EXPTDIR=$1
 

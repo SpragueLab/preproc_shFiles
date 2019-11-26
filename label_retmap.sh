@@ -13,7 +13,7 @@
 RFDIR=$1
 SUBJ=$2
 SESS=$3
-vistaDir=/deathstar/data/$RFDIR/$SUBJ/$SESS/${SUBJ}_${SESS}_vista
+vistaDir=$DATAROOT/$RFDIR/$SUBJ/$SESS/${SUBJ}_${SESS}_vista
 RFdir=$vistaDir/Inplane/Original   # where the RF files are saved, incl. nii.gz (raw)
 
 declare -a RF_prefix=("RF_ss5" "RF_surf" "RF_func" "RF_surf_25mm" "RF_func_25mm")

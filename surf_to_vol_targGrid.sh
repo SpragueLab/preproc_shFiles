@@ -23,7 +23,7 @@
 
 
 
-DATAROOT=/deathstar/data
+#DATAROOT=/deathstar/data
 
 #ROOT=/deathstar/data/vRF_tcs
 EXPTDIR=$1

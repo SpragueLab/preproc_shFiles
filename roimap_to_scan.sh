@@ -4,19 +4,20 @@
 
 
 
-ROOT=/deathstar/data/wmChoose_scanner
+#ROOT=/deathstar/data/wmChoose_scanner
+ROOT=$DATAROOT/fspri
 
+SUBJ=sub004
 
-SUBJ=CC
-
-SESS=MGSMap1
+SESS=barret01
 
 AnatSUBJ=${SUBJ}anat
 
 
-ROIEXT=_tcs
+ROIEXT=
 
-ROILOC=/deathstar/data/vRF_tcs/$SUBJ/RF1/${SUBJ}_RF1_vista/roi$ROIEXT
+#ROILOC=/deathstar/data/vRF_tcs/$SUBJ/RF1/${SUBJ}_RF1_vista/roi$ROIEXT
+ROILOC=$DATAROOT/retinotopy/$SUBJ/$SESS/${SUBJ}_${SESS}_vista/rois$ROIEXT
 
 ROIDEST=$ROOT/$SUBJ/rois
 mkdir $ROIDEST
@@ -38,7 +39,7 @@ declare -a HEMIS=("lh" "rh")
 
 # this generically looks for ROIs on surface and turns them into ROIs on volume
 
-for r in roi$ROIEXT/*1D.roi;do
+for r in rois$ROIEXT/*1D.roi;do
 
   # ASSUMES: lh.V1.1D.roi, etc
 
@@ -89,7 +90,11 @@ done
 
 for r in $ROIDEST/lh.*.nii.gz;do
 
-  fname=`echo $r | cut -f 7 -d /`
+  # NOTE: this is hacky af right now - need to change the cut args according to directory depth (can probably do so by counting # of /'s?)
+
+
+
+  fname=`echo $r | cut -f 8 -d /`
   #hemi=`echo $fname | cut -f 1 -d .`
   area=`echo $fname | cut -f 2 -d .`
   echo $area

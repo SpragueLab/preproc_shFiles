@@ -26,7 +26,7 @@
 
 
 # ~~~~~~~~ parse args ~~~~~~~~~~~~
-DATAROOT=/deathstar/data
+#DATAROOT=/deathstar/data
 EXPTDIR=$1
 RETSUBJ=$2
 RETSESS=$3
