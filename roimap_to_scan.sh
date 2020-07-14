@@ -2,21 +2,20 @@
 # (typically not necessary; this is mostly for prisma tests)
 
 
+ROOT=$DATAROOT/retinotopy
+ANATROOT=$DATAROOT/fs_subjects
 
-
-#ROOT=/deathstar/data/wmChoose_scanner
-ROOT=$DATAROOT/fspri
-
-SUBJ=sub004
+SUBJ=sub003
 
 SESS=barret01
 
 AnatSUBJ=${SUBJ}anat
 
-
+# typically _tcs, _djt, etc....
 ROIEXT=
 
 #ROILOC=/deathstar/data/vRF_tcs/$SUBJ/RF1/${SUBJ}_RF1_vista/roi$ROIEXT
+#ROILOC=$DATAROOT/retinotopy/$SUBJ/$SESS/${SUBJ}_${SESS}_vista/rois$ROIEXT
 ROILOC=$DATAROOT/retinotopy/$SUBJ/$SESS/${SUBJ}_${SESS}_vista/rois$ROIEXT
 
 ROIDEST=$ROOT/$SUBJ/rois
@@ -49,12 +48,14 @@ for r in rois$ROIEXT/*1D.roi;do
     area=`echo $fname | cut -f 2 -d .`
     echo $hemi $area
 
+    # updated TCS 7/13/2020 - fix a permissions issue...(absolute path to fs_subjects directory now)
+
     # surf2vol
     3dSurf2Vol \
-    -spec $ROOT/$SUBJ/$AnatSUBJ/SUMA/${AnatSUBJ}_$hemi.spec \
+    -spec $ANATROOT/$AnatSUBJ/SUMA/${AnatSUBJ}_$hemi.spec \
     -surf_A smoothwm \
     -surf_B pial \
-    -sv $ROOT/$SUBJ/$AnatSUBJ/SUMA/${AnatSUBJ}_SurfVol+orig. \
+    -sv $ANATROOT/$AnatSUBJ/SUMA/${AnatSUBJ}_SurfVol+orig. \
     -grid_parent $GridParent \
     -map_func mode \
     -f_steps 15 \
@@ -91,10 +92,11 @@ done
 for r in $ROIDEST/lh.*.nii.gz;do
 
   # NOTE: this is hacky af right now - need to change the cut args according to directory depth (can probably do so by counting # of /'s?)
+  echo $r
 
 
-
-  fname=`echo $r | cut -f 8 -d /`
+  #fname=`echo $r | cut -f 8 -d /`
+  fname=`echo $r | cut -f 11 -d /`
   #hemi=`echo $fname | cut -f 1 -d .`
   area=`echo $fname | cut -f 2 -d .`
   echo $area
